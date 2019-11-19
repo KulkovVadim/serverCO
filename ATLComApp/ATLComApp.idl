@@ -1,0 +1,45 @@
+﻿// ATLComApp.idl: источник языка IDL для ATLComApp
+//
+
+// Этот файл будет обработан средством MIDL для
+// создание библиотеки типов ($handlersafeidlname$.tlb) и кода маршалирования.
+
+import "oaidl.idl";
+import "ocidl.idl";
+
+[
+	object,
+	uuid(62e467a2-10cf-4f07-a3fe-b62d9d9ab1c8),
+	dual,
+	nonextensible,
+	pointer_default(unique)
+]
+interface IScoreCard : IDispatch
+{
+	[propget, id(1), helpstring("Property Name")] HRESULT Name([out, retval] BSTR* pVal);
+	[propput, id(1), helpstring("Property Name")] HRESULT Name([in] BSTR newVal);
+	[propget, id(2), helpstring("Property ALTMarks")] HRESULT ATLMarks([out, retval] SHORT* pVal);
+	[propput, id(2), helpstring("Property ALTMarks")] HRESULT ATLMarks([in] SHORT newVal);
+	[propget, id(3), helpstring("Property COMMars")] HRESULT COMMarks([out, retval] SHORT* pVal);
+	[propput, id(3), helpstring("Property COMMars")] HRESULT COMMarks([in] SHORT newVal);
+	[propget, id(4), helpstring("Property Total")] HRESULT Total([out, retval] SHORT* pVal);
+	[propput, id(4), helpstring("Property Total")] HRESULT Total([in] SHORT newVal);
+	[id(5), helpstring("Calculate Method")] HRESULT Calculate();
+};
+[
+	uuid(66601755-7f85-4fb2-a132-d94e5a6c5744),
+	version(1.0),
+]
+library ATLComAppLib
+{
+	importlib("stdole2.tlb");
+	[
+		uuid(58204eee-fc42-42f0-bab3-838346da8723)
+	]
+	coclass ScoreCard
+	{
+		[default] interface IScoreCard;
+	};
+};
+
+import "shobjidl.idl";

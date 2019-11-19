@@ -1,0 +1,16 @@
+HKCR
+{
+	NoRemove CLSID
+	{
+		ForceRemove {58204eee-fc42-42f0-bab3-838346da8723} = s 'ScoreCard class'
+		{
+			ForceRemove Programmable
+			InprocServer32 = s '%MODULE%'
+			{
+				val ThreadingModel = s 'Apartment'
+			}
+			TypeLib = s '{66601755-7f85-4fb2-a132-d94e5a6c5744}'
+			Version = s '1.0'
+		}
+	}
+}
